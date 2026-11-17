@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazılımcı & Oyun Geliştirici | Portfolyo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#f0fdf4',   // Çok açık yeşil (arka plan vurguları)
+                            soft: '#dcfce7',    // Yumuşak yeşil (etiketler ve çerçeveler)
+                            main: '#16a34a',    // Ana canlı doğal yeşil (butonlar ve vurgular)
+                            dark: '#15803d',    // Hover durumu için koyu yeşil
+                            deep: '#052e16',    // Metinler için çok koyu yeşil-siyah tonu
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Özel İmleç Sistemi (ArrowFarCursor & ArrowCursor) */
+        /* Varsayılan İmleç: Klasik kalın siyah çerçeveli beyaz eğik ok (ArrowFarCursor) */
+        html, body {
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M4 3 L11 26 L15.5 18.5 L23 26 L26.5 22.5 L19 15 L26.5 10.5 Z' fill='%23ffffff' stroke='%23000000' stroke-width='2.6' stroke-linejoin='round'/%3E%3C/svg%3E") 4 3, auto;
+        }
+
+        /* Tıklanabilir Öğeler Üzerinde İmleç: Klasik kalın siyah çerçeveli beyaz işaret eli (ArrowCursor) */
+        a, button, select, [role="button"], .cursor-pointer, a *, button *, [role="button"] * {
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M10 4 C8.6 4 7.5 5.1 7.5 6.5 L7.5 16.5 L5.2 14.8 C4.1 14 2.6 14.2 1.8 15.3 C1.1 16.3 1.3 17.7 2.2 18.5 L9.8 25.6 C11.2 26.9 13 27.5 14.9 27.5 L20.5 27.5 C23.8 27.5 26.5 24.8 26.5 21.5 L26.5 14.5 C26.5 13.1 25.4 12 24 12 C23.3 12 22.7 12.3 22.2 12.7 C21.9 11.5 20.8 10.6 19.5 10.6 C18.8 10.6 18.1 10.9 17.6 11.4 C17.3 10.2 16.2 9.4 15 9.4 C14.1 9.4 13.2 9.8 12.7 10.5 L12.5 10.5 L12.5 6.5 C12.5 5.1 11.4 4 10 4 Z' fill='%23ffffff' stroke='%23000000' stroke-width='2.4' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E") 10 4, pointer !important;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-800 antialiased selection:bg-brand-soft selection:text-brand-dark flex flex-col min-h-screen">
+
+    <!-- Üst Gezinme Çubuğu (Minimalist) -->
+    <header class="w-full border-b border-emerald-100/80 bg-white/90 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+            <!-- Marka / İsim İkonu (Klasik Android Market Çanta Logosu) -->
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="w-9 h-9 flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
+                    <svg class="w-9 h-9 overflow-visible" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-label="Android Market Logo">
+                        <defs>
+                            <!-- Alt Gölge -->
+                            <radialGradient id="bagShadow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#000000" stop-opacity="0.32"/>
+                                <stop offset="65%" stop-color="#000000" stop-opacity="0.12"/>
+                                <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+                            </radialGradient>
+                            <!-- Çanta Dış Üst Yüzey Gradyanı -->
+                            <linearGradient id="bagTopGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#b4b9c2"/>
+                                <stop offset="100%" stop-color="#d5d9e0"/>
+                            </linearGradient>
+                            <!-- Çanta Dış Alt Yüzey Gradyanı -->
+                            <linearGradient id="bagBottomGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#eef0f3"/>
+                                <stop offset="100%" stop-color="#ffffff"/>
+                            </linearGradient>
+                            <!-- Çanta İç Limoni Yeşil Yüzey Gradyanı -->
+                            <linearGradient id="bagInnerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#d5f26d"/>
+                                <stop offset="100%" stop-color="#99c928"/>
+                            </linearGradient>
+                            <!-- Çanta Ön Yüzey Kırpma Alanı -->
+                            <clipPath id="bagFrontClip">
+                                <polygon points="15,37 105,37 103,104 17,104"/>
+                            </clipPath>
+                        </defs>
+
+                        <!-- Alt Yumuşak Gölge -->
+                        <ellipse cx="60" cy="106" rx="48" ry="6.5" fill="url(#bagShadow)"/>
+
+                        <!-- Arka Sap (Açık Limoni Yeşil) -->
+                        <path d="M 41 37 C 41 8, 79 8, 79 37" fill="none" stroke="#c8eb59" stroke-width="3.2" stroke-linecap="round"/>
+
+                        <!-- Çanta İç Kısmı ve Yan Kıvrımlar -->
+                        <polygon points="22,27 98,27 105,37 15,37" fill="url(#bagInnerGrad)"/>
+                        <polygon points="15,37 22,27 22,37" fill="#82b31b"/>
+                        <polygon points="105,37 98,27 98,37" fill="#82b31b"/>
+                        <!-- Üst İnce Beyaz Kenar Çizgisi -->
+                        <polyline points="15,37 22,27 98,27 105,37" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linejoin="round"/>
+
+                        <!-- Ön Sap (Koyu Limoni Yeşil) -->
+                        <path d="M 38 37 C 38 14, 82 14, 82 37" fill="none" stroke="#8ab824" stroke-width="3.6" stroke-linecap="round"/>
+                        <path d="M 38 37 C 38 14, 82 14, 82 37" fill="none" stroke="#b5de43" stroke-width="1.2" stroke-linecap="round"/>
+
+                        <!-- Çanta Ön Gövdesi (Üst Gri-Gümüş & Alt Beyaz Katlama Çizgisi) -->
+                        <g clip-path="url(#bagFrontClip)">
+                            <polygon points="15,37 105,37 104,76 16,76" fill="url(#bagTopGrad)"/>
+                            <polygon points="16,76 104,76 103,104 17,104" fill="url(#bagBottomGrad)"/>
+                            <line x1="16" y1="76" x2="104" y2="76" stroke="#c7ccd4" stroke-width="0.9"/>
+
+                            <!-- Sağ Alt Köşeden Bakan Eğik Yeşil Android Maskotu -->
+                            <g transform="translate(82, 82) rotate(-30) scale(0.92)" fill="#7cb322">
+                                <!-- Kafa -->
+                                <path d="M -21 0 A 21 21 0 0 1 21 0 Z"/>
+                                <!-- Sol ve Sağ Antenler -->
+                                <line x1="-10" y1="-17" x2="-15" y2="-26" stroke="#7cb322" stroke-width="2.4" stroke-linecap="round"/>
+                                <line x1="10" y1="-17" x2="15" y2="-26" stroke="#7cb322" stroke-width="2.4" stroke-linecap="round"/>
+                                <!-- Gözler -->
+                                <circle cx="-9" cy="-8.5" r="2.1" fill="#e6e9ef"/>
+                                <circle cx="9" cy="-8.5" r="2.1" fill="#e6e9ef"/>
+                                <!-- Gövde -->
+                                <rect x="-21" y="3.2" width="42" height="32" rx="3"/>
+                                <!-- Sol ve Sağ Kollar -->
+                                <rect x="-30" y="3.2" width="6.5" height="24" rx="3.25"/>
+                                <rect x="23.5" y="3.2" width="6.5" height="24" rx="3.25"/>
+                            </g>
+                        </g>
+
+                        <!-- Çanta Dış Kenar Hatları -->
+                        <polygon points="15,37 105,37 103,104 17,104" fill="none" stroke="#9fa6b2" stroke-width="0.9" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span data-i18n="brandName" class="font-semibold text-slate-900 tracking-tight text-base">Geliştirici</span>
+            </a>
+
+            <!-- Sağ Menü Linkleri ve Dil Seçici -->
+            <nav class="flex items-center gap-4 sm:gap-6 text-sm font-medium text-slate-600">
+                <a href="#projeler" data-i18n="navProjects" class="hover:text-brand-main transition-colors">Projeler</a>
+                
+                <a href="https://www.youtube.com/@AndroidMarketDeveloper" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-1.5 text-brand-main hover:text-brand-dark font-semibold transition-colors">
+                    <span>YouTube</span>
+                    <!-- Dış Bağlantı İkonu -->
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                </a>
+
+                <!-- Dil Seçici (Otomatik algılanır, manuel değiştirilebilir) -->
+                <div class="relative inline-flex items-center">
+                    <select id="language-selector" aria-label="Dil Seçimi / Language"
+                            class="appearance-none bg-brand-light hover:bg-brand-soft/70 text-brand-dark border border-emerald-200 rounded-lg pl-2.5 pr-7 py-1 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-brand-main/30 transition-colors">
+                        <option value="tr">TR</option>
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                        <option value="de">DE</option>
+                        <option value="es">ES</option>
+                    </select>
+                    <svg class="w-3.5 h-3.5 text-brand-dark pointer-events-none absolute right-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Ana İçerik Alanı -->
+    <main class="flex-grow">
+        
+        <!-- 1. Üst / Giriş Bölümü (Hero) -->
+        <section class="max-w-4xl mx-auto px-6 pt-20 pb-16 sm:pt-28 sm:pb-24">
+            <div class="max-w-2xl">
+                <!-- Konum & Durum Rozeti -->
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-light border border-emerald-200 text-brand-dark text-xs font-medium mb-8">
+                    <span class="w-2 h-2 rounded-full bg-brand-main animate-pulse"></span>
+                    <span data-i18n="badge">Türkiye • Oyun & Yazılım Geliştirici</span>
+                </div>
+
+                <!-- Ana Başlık (Sade & Net) -->
+                <h1 data-i18n="heroTitle" class="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 tracking-tight leading-[1.15] mb-6">
+                    Merhaba, ben bir <span class="text-brand-main">yazılımcıyım.</span>
+                </h1>
+
+                <!-- Tanıtım Metni -->
+                <p data-i18n="heroBio" class="text-lg sm:text-xl text-slate-600 leading-relaxed mb-8 font-normal">
+                    Kodlamayı seven, Türkiye'de yaşayan bir yazılımcı. Android, Linux ve Windows platformları için oyunlar ve yazılımlar geliştiriyorum.
+                </p>
+
+                <!-- 4. Platform Rozetleri / Etiketleri (Sade Tasarım - Sadece Yazıya Tıklanınca Bilgi Açılır) -->
+                <div class="flex flex-wrap items-center gap-3 mb-10">
+                    <!-- Android Etiketi -->
+                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-emerald-200/90 text-slate-700 text-sm font-medium shadow-xs">
+                        <svg class="w-4 h-4 text-brand-main" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4483.9993.9993.0001.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4483.9993.9993 0 .5511-.4483.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.8508 12 7.8508s-3.5902.3931-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396"/>
+                        </svg>
+                        <span role="button" tabindex="0" onclick="openPlatformModal('android')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlatformModal('android');}"
+                              class="cursor-pointer hover:text-brand-main hover:underline underline-offset-4 transition-colors focus:outline-none focus:text-brand-main">Android</span>
+                    </span>
+
+                    <!-- Linux Etiketi -->
+                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-emerald-200/90 text-slate-700 text-sm font-medium shadow-xs">
+                        <svg class="w-4 h-4 text-brand-main" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <span role="button" tabindex="0" onclick="openPlatformModal('linux')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlatformModal('linux');}"
+                              class="cursor-pointer hover:text-brand-main hover:underline underline-offset-4 transition-colors focus:outline-none focus:text-brand-main">Linux</span>
+                    </span>
+
+                    <!-- Windows Etiketi -->
+                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-emerald-200/90 text-slate-700 text-sm font-medium shadow-xs">
+                        <svg class="w-4 h-4 text-brand-main" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+                        </svg>
+                        <span role="button" tabindex="0" onclick="openPlatformModal('windows')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlatformModal('windows');}"
+                              class="cursor-pointer hover:text-brand-main hover:underline underline-offset-4 transition-colors focus:outline-none focus:text-brand-main">Windows</span>
+                    </span>
+                </div>
+
+                <!-- 2. YouTube Kanalı Bağlantısı -->
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="https://www.youtube.com/@AndroidMarketDeveloper" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-brand-main hover:bg-brand-dark text-white font-medium text-base shadow-sm hover:shadow-md transition-all duration-200 group">
+                        <!-- YouTube Oynat İkonu -->
+                        <svg class="w-5 h-5 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        <span data-i18n="youtubeBtn">YouTube Kanalım</span>
+                        <span class="text-emerald-100 text-sm font-normal hidden sm:inline">(@AndroidMarketDeveloper)</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- İnce Ayırıcı Çizgi -->
+        <div class="max-w-4xl mx-auto px-6">
+            <hr class="border-emerald-100">
+        </div>
+
+        <!-- 3. Aktif Olarak Geliştirilen Projeler Bölümü -->
+        <section id="projeler" class="max-w-4xl mx-auto px-6 py-16 sm:py-24">
+            <div class="mb-10">
+                <span data-i18n="projectsSubtitle" class="text-xs font-semibold uppercase tracking-wider text-brand-main">Neler Yapıyorum?</span>
+                <h2 data-i18n="projectsTitle" class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">Aktif Olarak Geliştirdiğim Projeler</h2>
+            </div>
+
+            <!-- İki Sütunlu Proje Kartları -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Proje 1: Bozkurt EtOS -->
+                <article role="button" tabindex="0" onclick="openProjectModal('bozkurt')" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openProjectModal('bozkurt'); }"
+                         class="cursor-pointer group bg-white rounded-2xl border border-emerald-200/80 p-7 hover:border-brand-main hover:shadow-lg hover:shadow-emerald-500/10 hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between focus:outline-none focus:ring-2 focus:ring-brand-main/40">
+                    <div>
+                        <div class="flex items-center justify-between gap-4 mb-5">
+                            <!-- Proje İkonu -->
+                            <div class="w-11 h-11 rounded-xl bg-brand-light border border-emerald-100 flex items-center justify-center text-brand-main group-hover:bg-brand-main group-hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <!-- Durum Rozeti -->
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-brand-light text-brand-dark border border-emerald-200/60">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-main"></span>
+                                <span data-i18n="statusActive">Geliştiriliyor</span>
+                            </span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-slate-900 mb-2.5 group-hover:text-brand-main transition-colors">
+                            Bozkurt EtOS
+                        </h3>
+                        <p data-i18n="project1Desc" class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            Linux tabanlı, sade, hızlı ve kullanıcı dostu bir işletim sistemi ve sistem yazılımı projesi. Günlük kullanım ve performans odaklı olarak geliştirilmektedir.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-2 text-xs font-medium text-slate-500">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-50 text-slate-600 border border-slate-200/60">Linux</span>
+                            <span data-i18n="project1Tag" class="px-2.5 py-1 rounded-md bg-slate-50 text-slate-600 border border-slate-200/60">İşletim Sistemi</span>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-brand-main font-semibold group-hover:translate-x-0.5 transition-transform">
+                            <span data-i18n="clickForDetails">Detaylar</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+
+                <!-- Proje 2: Android Market 2 -->
+                <article role="button" tabindex="0" onclick="openProjectModal('androidMarket')" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openProjectModal('androidMarket'); }"
+                         class="cursor-pointer group bg-white rounded-2xl border border-emerald-200/80 p-7 hover:border-brand-main hover:shadow-lg hover:shadow-emerald-500/10 hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between focus:outline-none focus:ring-2 focus:ring-brand-main/40">
+                    <div>
+                        <div class="flex items-center justify-between gap-4 mb-5">
+                            <!-- Proje İkonu -->
+                            <div class="w-11 h-11 rounded-xl bg-brand-light border border-emerald-100 flex items-center justify-center text-brand-main group-hover:bg-brand-main group-hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                                </svg>
+                            </div>
+                            <!-- Durum Rozeti -->
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-brand-light text-brand-dark border border-emerald-200/60">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-main"></span>
+                                <span data-i18n="statusActive">Geliştiriliyor</span>
+                            </span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-slate-900 mb-2.5 group-hover:text-brand-main transition-colors">
+                            Android Market 2
+                        </h3>
+                        <p data-i18n="project2Desc" class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            Android kullanıcıları için geliştirilen modern, hafif ve pratik uygulama ve oyun keşif platformu. Kolay arayüzüyle güvenli erişim sunar.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-2 text-xs font-medium text-slate-500">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 rounded-md bg-slate-50 text-slate-600 border border-slate-200/60">Android</span>
+                            <span data-i18n="project2Tag" class="px-2.5 py-1 rounded-md bg-slate-50 text-slate-600 border border-slate-200/60">Uygulama & Oyun Platformu</span>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-brand-main font-semibold group-hover:translate-x-0.5 transition-transform">
+                            <span data-i18n="clickForDetails">Detaylar</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Proje Detay Penceresi (Modal) -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-slate-900/40 backdrop-blur-xs transition-opacity duration-200"
+         onclick="if(event.target === this) closeProjectModal()">
+        <div class="bg-white w-full max-w-lg rounded-2xl border border-emerald-200 shadow-2xl overflow-hidden transform transition-all duration-200" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <!-- Modal Üst Kısmı -->
+            <div class="px-6 py-5 bg-brand-light/70 border-b border-emerald-100 flex items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div id="modal-icon" class="w-10 h-10 rounded-xl bg-brand-main text-white flex items-center justify-center shadow-xs">
+                        <!-- Dinamik İkon -->
+                    </div>
+                    <div>
+                        <span id="modal-badge" class="inline-block text-[11px] font-semibold uppercase tracking-wider text-brand-main"></span>
+                        <h3 id="modal-title" class="text-xl font-bold text-slate-900"></h3>
+                    </div>
+                </div>
+                <button type="button" onclick="closeProjectModal()" aria-label="Kapat"
+                        class="w-9 h-9 rounded-xl bg-white hover:bg-emerald-50 border border-emerald-200/80 text-slate-500 hover:text-brand-dark flex items-center justify-center transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Modal İçerik Alanı -->
+            <div class="p-6 space-y-5">
+                <p id="modal-description" class="text-slate-600 text-sm sm:text-base leading-relaxed"></p>
+
+                <!-- Platform Odak Noktaları / Etiketleri (Sadece Platform Modunda Görünür) -->
+                <div id="modal-tags-container" class="hidden flex-wrap gap-2"></div>
+
+                <!-- Bilgi & Kanal Yönlendirme Kutusu -->
+                <div class="p-4 rounded-xl bg-brand-light/60 border border-emerald-200/80 space-y-3">
+                    <div class="flex items-start gap-2.5">
+                        <svg class="w-5 h-5 text-brand-main shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <p id="modal-info-note" class="text-sm text-brand-deep font-medium leading-snug"></p>
+                    </div>
+
+                    <!-- Proje Modu: YouTube Yönlendirme Butonu -->
+                    <a id="modal-youtube-link" href="#" target="_blank" rel="noopener noreferrer"
+                       class="w-full inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl bg-brand-main hover:bg-brand-dark text-white font-semibold text-sm shadow-xs hover:shadow-md transition-all duration-200">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        <span id="modal-youtube-btn-text"></span>
+                        <span id="modal-youtube-handle" class="text-emerald-100 text-xs font-normal"></span>
+                    </a>
+
+                    <!-- Bozkurt EtOS Modu: İkincil Geliştirici YouTube Kanalı Butonu -->
+                    <a id="modal-secondary-youtube-link" href="https://www.youtube.com/@AndroidMarketDeveloper" target="_blank" rel="noopener noreferrer"
+                       class="hidden w-full items-center justify-center gap-2.5 px-5 py-2.5 rounded-xl bg-white hover:bg-brand-soft/60 text-brand-dark border border-emerald-200 hover:border-brand-main font-semibold text-sm shadow-2xs transition-all duration-200">
+                        <svg class="w-4 h-4 text-brand-main fill-current" viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        <span id="modal-secondary-youtube-btn-text"></span>
+                        <span id="modal-secondary-youtube-handle" class="text-slate-500 text-xs font-normal"></span>
+                    </a>
+
+                    <!-- Platform Modu: Kapat Butonu -->
+                    <button id="modal-close-action-btn" type="button" onclick="closeProjectModal()"
+                            class="hidden w-full items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-main hover:bg-brand-dark text-white font-semibold text-sm shadow-xs hover:shadow-md transition-all duration-200">
+                        <span data-i18n="modalCloseBtn">Kapat</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Alt Bilgi (Footer) -->
+    <footer class="border-t border-emerald-100 bg-brand-light/40">
+        <div class="max-w-4xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600">
+            <p data-i18n="footerText" class="text-center sm:text-left">
+                © 2026 — Türkiye'de sevgiyle kodlandı.
+            </p>
+            <a href="https://www.youtube.com/@AndroidMarketDeveloper" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-2 font-medium text-brand-main hover:text-brand-dark transition-colors">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                <span>youtube.com/@AndroidMarketDeveloper</span>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Çoklu Dil Sistemi (Sistem Diline Göre Otomatik Algılama) -->
+    <script>
+        const translations = {
+            tr: {
+                pageTitle: "Yazılımcı & Oyun Geliştirici | Portfolyo",
+                brandName: "Geliştirici",
+                navProjects: "Projeler",
+                badge: "Türkiye • Oyun & Yazılım Geliştirici",
+                heroTitle: 'Merhaba, ben bir <span class="text-brand-main">yazılımcıyım.</span>',
+                heroBio: "Kodlamayı seven, Türkiye'de yaşayan bir yazılımcı. Android, Linux ve Windows platformları için oyunlar ve yazılımlar geliştiriyorum.",
+                youtubeBtn: "YouTube Kanalım",
+                projectsSubtitle: "Neler Yapıyorum?",
+                projectsTitle: "Aktif Olarak Geliştirdiğim Projeler",
+                statusActive: "Geliştiriliyor",
+                project1Desc: "Linux tabanlı, sade, hızlı ve kullanıcı dostu bir işletim sistemi ve sistem yazılımı projesi. Günlük kullanım ve performans odaklı olarak geliştirilmektedir.",
+                project1Tag: "İşletim Sistemi",
+                project2Desc: "Android kullanıcıları için geliştirilen modern, hafif ve pratik uygulama ve oyun keşif platformu. Kolay arayüzüyle güvenli erişim sunar.",
+                project2Tag: "Uygulama & Oyun Platformu",
+                clickForDetails: "Detaylar için tıklayın",
+                modalBozkurtBadge: "Linux • İşletim Sistemi",
+                modalBozkurtDesc: "Bozkurt EtOS; hız, sadelik ve günlük kullanım kolaylığı sunmak amacıyla sıfırdan özelleştirilen Linux tabanlı bir işletim sistemi projesidir.",
+                modalBozkurtNote: "Gelişmeleri, güncellemeleri ve detaylı bilgileri resmi YouTube kanalından takip edebilirsiniz.",
+                modalBozkurtBtn: "Bozkurt EtOS YouTube Kanalı",
+                modalBozkurtSecondaryBtn: "Geliştirici YouTube Kanalım",
+                modalAndroidBadge: "Android • Uygulama Mağazası",
+                modalAndroidDesc: "Android Market 2; Android cihazlar için hafif, hızlı ve modern bir arayüzle uygulama ve oyunlara kolayca ulaşmanızı sağlayan yeni nesil market projesidir.",
+                modalAndroidNote: "Tüm detayları, yeni sürümleri ve geliştirme sürecini YouTube kanalımdan takip edebilirsiniz.",
+                modalAndroidBtn: "Geliştirici YouTube Kanalı",
+                modalCloseBtn: "Kapat",
+                platformAndroidBadge: "Mobil Platform • Android",
+                platformAndroidDesc: "Android ekosistemi için akıcı, düşük sistem gereksinimli mobil oyunlar ve kullanıcı dostu yardımcı uygulamalar geliştiriyorum. Dokunmatik kontroller, performans optimizasyonu ve sade arayüz tasarımı temel odak noktalarımdır.",
+                platformAndroidNote: "Aktif Android projelerimden biri olan Android Market 2'yi aşağıda inceleyebilirsiniz.",
+                platformAndroidTags: ["Mobil Oyun Geliştirme", "APK & Performans Optimizasyonu", "Sade Arayüz Tasarımı"],
+                platformLinuxBadge: "Açık Kaynak • Linux",
+                platformLinuxDesc: "Linux ortamında hem yerel (native) oyunlar hem de sistem araçları ve özelleştirilmiş dağıtım çözümleri geliştiriyorum. Hafiflik, terminal uyumluluğu ve yüksek kararlılık üzerine çalışıyorum.",
+                platformLinuxNote: "Linux tabanlı işletim sistemi projem Bozkurt EtOS'u aşağıda inceleyebilirsiniz.",
+                platformLinuxTags: ["Native Linux Oyunları", "Sistem & Kabuk Araçları", "Özel Dağıtım Geliştirme"],
+                platformWindowsBadge: "Masaüstü • Windows",
+                platformWindowsDesc: "Windows masaüstü platformu için 2D/3D bağımsız (indie) oyunlar ve pratik masaüstü yazılımları üretiyorum. Yüksek kare hızı, klavye-fare ergonomisi ve geniş donanım uyumluluğuna önem veriyorum.",
+                platformWindowsNote: "Yeni oyun geliştirme süreçlerimi ve oynanış videolarını YouTube kanalımda paylaşıyorum.",
+                platformWindowsTags: ["PC Oyun Geliştirme", "Masaüstü Uygulamaları", "Donanım & FPS Optimizasyonu"],
+                footerText: "© 2026 — Türkiye'de sevgiyle kodlandı."
+            },
+            en: {
+                pageTitle: "Software & Game Developer | Portfolio",
+                brandName: "Developer",
+                navProjects: "Projects",
+                badge: "Turkey • Game & Software Developer",
+                heroTitle: 'Hello, I am a <span class="text-brand-main">developer.</span>',
+                heroBio: "A developer living in Turkey who loves coding. I create games and software for Android, Linux, and Windows platforms.",
+                youtubeBtn: "My YouTube Channel",
+                projectsSubtitle: "What I'm Working On",
+                projectsTitle: "Actively Developed Projects",
+                statusActive: "In Development",
+                project1Desc: "A Linux-based, clean, fast, and user-friendly operating system and system software project focused on daily use and performance.",
+                project1Tag: "Operating System",
+                project2Desc: "A modern, lightweight, and practical app and game discovery platform built for Android users with a clean interface.",
+                project2Tag: "App & Game Platform",
+                clickForDetails: "Click for details",
+                modalBozkurtBadge: "Linux • Operating System",
+                modalBozkurtDesc: "Bozkurt EtOS is a Linux-based operating system project customized from the ground up to deliver speed, simplicity, and everyday usability.",
+                modalBozkurtNote: "You can follow updates, releases, and detailed information on the official YouTube channel.",
+                modalBozkurtBtn: "Bozkurt EtOS YouTube Channel",
+                modalBozkurtSecondaryBtn: "My Developer YouTube Channel",
+                modalAndroidBadge: "Android • App Store",
+                modalAndroidDesc: "Android Market 2 is a next-generation lightweight and fast app & game discovery platform designed with a clean interface for Android devices.",
+                modalAndroidNote: "You can follow all details, development videos, and announcements on my YouTube channel.",
+                modalAndroidBtn: "Developer YouTube Channel",
+                modalCloseBtn: "Close",
+                platformAndroidBadge: "Mobile Platform • Android",
+                platformAndroidDesc: "I develop smooth, lightweight mobile games and user-friendly utility apps for the Android ecosystem. Touch controls, performance optimization, and clean UI design are my core priorities.",
+                platformAndroidNote: "You can check out Android Market 2, one of my active Android projects, below.",
+                platformAndroidTags: ["Mobile Game Dev", "APK & Performance Optimization", "Clean UI Design"],
+                platformLinuxBadge: "Open Source • Linux",
+                platformLinuxDesc: "On Linux, I build native games, system utilities, and customized distribution solutions. My focus is on lightweight architecture, terminal compatibility, and rock-solid stability.",
+                platformLinuxNote: "You can explore my Linux-based operating system project Bozkurt EtOS below.",
+                platformLinuxTags: ["Native Linux Games", "System & CLI Tools", "Custom Distro Development"],
+                platformWindowsBadge: "Desktop • Windows",
+                platformWindowsDesc: "For the Windows desktop platform, I create 2D/3D indie games and practical desktop software with a focus on high frame rates, responsive controls, and broad hardware compatibility.",
+                platformWindowsNote: "I share game development progress and gameplay showcases on my YouTube channel.",
+                platformWindowsTags: ["PC Game Development", "Desktop Software", "Hardware & FPS Optimization"],
+                footerText: "© 2026 — Coded with passion in Turkey."
+            },
+            ru: {
+                pageTitle: "Разработчик игр и ПО | Портфолио",
+                brandName: "Разработчик",
+                navProjects: "Проекты",
+                badge: "Турция • Разработчик игр и ПО",
+                heroTitle: 'Привет, я <span class="text-brand-main">разработчик.</span>',
+                heroBio: "Разработчик из Турции, который любит программировать. Создаю игры и программы для платформ Android, Linux и Windows.",
+                youtubeBtn: "Мой YouTube-канал",
+                projectsSubtitle: "Чем я занимаюсь",
+                projectsTitle: "Активно разрабатываемые проекты",
+                statusActive: "В разработке",
+                project1Desc: "Простая, быстрая и удобная операционная система и системное ПО на базе Linux, ориентированное на повседневное использование и производительность.",
+                project1Tag: "Операционная система",
+                project2Desc: "Современная, легкая и удобная платформа для поиска приложений и игр для пользователей Android с простым интерфейсом.",
+                project2Tag: "Платформа приложений и игр",
+                clickForDetails: "Нажмите для подробностей",
+                modalBozkurtBadge: "Linux • Операционная система",
+                modalBozkurtDesc: "Bozkurt EtOS — это проект операционной системы на базе Linux, созданный для обеспечения высокой скорости, простоты и удобства повседневной работы.",
+                modalBozkurtNote: "Следить за обновлениями и подробной информацией можно на официальном YouTube-канале.",
+                modalBozkurtBtn: "YouTube-канал Bozkurt EtOS",
+                modalBozkurtSecondaryBtn: "Мой YouTube-канал разработчика",
+                modalAndroidBadge: "Android • Магазин приложений",
+                modalAndroidDesc: "Android Market 2 — это легкая и быстрая платформа нового поколения для поиска приложений и игр на Android с простым интерфейсом.",
+                modalAndroidNote: "Все подробности и процесс разработки доступны на моём YouTube-канале.",
+                modalAndroidBtn: "YouTube-канал разработчика",
+                modalCloseBtn: "Закрыть",
+                platformAndroidBadge: "Мобильная платформа • Android",
+                platformAndroidDesc: "Я разрабатываю плавные, нетребовательные мобильные игры и удобные утилиты для экосистемы Android. Основное внимание уделяю сенсорному управлению, оптимизации и чистому интерфейсу.",
+                platformAndroidNote: "Ниже вы можете ознакомиться с моим активным проектом Android Market 2.",
+                platformAndroidTags: ["Разработка мобильных игр", "Оптимизация производительности", "Чистый интерфейс"],
+                platformLinuxBadge: "Открытый код • Linux",
+                platformLinuxDesc: "В среде Linux я создаю нативные игры, системные утилиты и кастомные решения на базе дистрибутивов, делая упор на легковесность, работу с терминалом и стабильность.",
+                platformLinuxNote: "Ниже представлен мой проект операционной системы на базе Linux — Bozkurt EtOS.",
+                platformLinuxTags: ["Нативные игры для Linux", "Системные утилиты", "Разработка дистрибутивов"],
+                platformWindowsBadge: "Десктоп • Windows",
+                platformWindowsDesc: "Для настольной платформы Windows я разрабатываю 2D/3D инди-игры и практичные программы, уделяя особое внимание высокой частоте кадров и совместимости с оборудованием.",
+                platformWindowsNote: "Процесс разработки игр и демонстрации геймплея я публикую на своём YouTube-канале.",
+                platformWindowsTags: ["Разработка игр для ПК", "Десктопные приложения", "Оптимизация FPS"],
+                footerText: "© 2026 — Сделано с любовью в Турции."
+            },
+            de: {
+                pageTitle: "Software- & Spieleentwickler | Portfolio",
+                brandName: "Entwickler",
+                navProjects: "Projekte",
+                badge: "Türkei • Spiele- & Softwareentwickler",
+                heroTitle: 'Hallo, ich bin ein <span class="text-brand-main">Entwickler.</span>',
+                heroBio: "Ein Entwickler aus der Türkei, der das Programmieren liebt. Ich entwickle Spiele und Software für Android-, Linux- und Windows-Plattformen.",
+                youtubeBtn: "Mein YouTube-Kanal",
+                projectsSubtitle: "Woran ich arbeite",
+                projectsTitle: "Aktiv entwickelte Projekte",
+                statusActive: "In Entwicklung",
+                project1Desc: "Ein Linux-basiertes, schlichtes, schnelles und benutzerfreundliches Betriebssystem-Projekt mit Fokus auf Alltagstauglichkeit und Leistung.",
+                project1Tag: "Betriebssystem",
+                project2Desc: "Eine moderne, schlanke und praktische App- und Spiele-Plattform für Android-Nutzer mit einer übersichtlichen Benutzeroberfläche.",
+                project2Tag: "App- & Spieleplattform",
+                clickForDetails: "Für Details klicken",
+                modalBozkurtBadge: "Linux • Betriebssystem",
+                modalBozkurtDesc: "Bozkurt EtOS ist ein Linux-basiertes Betriebssystemprojekt, das für Geschwindigkeit, Schlichtheit und einfache tägliche Nutzung entwickelt wurde.",
+                modalBozkurtNote: "Neuigkeiten, Updates und detaillierte Informationen finden Sie auf dem offiziellen YouTube-Kanal.",
+                modalBozkurtBtn: "Bozkurt EtOS YouTube-Kanal",
+                modalBozkurtSecondaryBtn: "Mein Entwickler-YouTube-Kanal",
+                modalAndroidBadge: "Android • App-Store",
+                modalAndroidDesc: "Android Market 2 ist eine leichte und schnelle App- und Spieleplattform der nächsten Generation mit einer klaren Oberfläche für Android.",
+                modalAndroidNote: "Alle Details und den Entwicklungsprozess können Sie auf meinem YouTube-Kanal verfolgen.",
+                modalAndroidBtn: "Entwickler YouTube-Kanal",
+                modalCloseBtn: "Schließen",
+                platformAndroidBadge: "Mobile Plattform • Android",
+                platformAndroidDesc: "Für das Android-Ökosystem entwickle ich flüssige, ressourcenschonende Handyspiele und benutzerfreundliche Apps. Touch-Steuerung, Performance-Optimierung und klares UI-Design stehen im Mittelpunkt.",
+                platformAndroidNote: "Unten können Sie mein aktives Android-Projekt Android Market 2 entdecken.",
+                platformAndroidTags: ["Mobile Spieleentwicklung", "Performance-Optimierung", "Klares UI-Design"],
+                platformLinuxBadge: "Open Source • Linux",
+                platformLinuxDesc: "Unter Linux entwickle ich native Spiele, Systemwerkzeuge und maßgeschneiderte Distributionslösungen mit Fokus auf Leichtgewichtigkeit, Terminal-Kompatibilität und hohe Stabilität.",
+                platformLinuxNote: "Unten finden Sie mein Linux-basiertes Betriebssystemprojekt Bozkurt EtOS.",
+                platformLinuxTags: ["Native Linux-Spiele", "System- & CLI-Tools", "Distributionsentwicklung"],
+                platformWindowsBadge: "Desktop • Windows",
+                platformWindowsDesc: "Für die Windows-Desktop-Plattform erstelle ich 2D/3D-Indie-Spiele und praktische Desktop-Software mit Fokus auf hohe Bildraten, präzise Steuerung und breite Hardware-Kompatibilität.",
+                platformWindowsNote: "Entwicklungsfortschritte und Gameplay-Videos teile ich auf meinem YouTube-Kanal.",
+                platformWindowsTags: ["PC-Spieleentwicklung", "Desktop-Software", "Hardware- & FPS-Optimierung"],
+                footerText: "© 2026 — Mit Leidenschaft in der Türkei programmiert."
+            },
+            es: {
+                pageTitle: "Desarrollador de Software y Juegos | Portafolio",
+                brandName: "Desarrollador",
+                navProjects: "Proyectos",
+                badge: "Turquía • Desarrollador de Juegos y Software",
+                heroTitle: 'Hola, soy <span class="text-brand-main">desarrollador.</span>',
+                heroBio: "Un desarrollador que vive en Turquía y ama programar. Creo juegos y software para las plataformas Android, Linux y Windows.",
+                youtubeBtn: "Mi Canal de YouTube",
+                projectsSubtitle: "En qué estoy trabajando",
+                projectsTitle: "Proyectos en Desarrollo Activo",
+                statusActive: "En desarrollo",
+                project1Desc: "Un proyecto de sistema operativo y software basado en Linux, limpio, rápido y fácil de usar, enfocado en el rendimiento diario.",
+                project1Tag: "Sistema Operativo",
+                project2Desc: "Una plataforma moderna, ligera y práctica de descubrimiento de aplicaciones y juegos para usuarios de Android.",
+                project2Tag: "Plataforma de Apps y Juegos",
+                clickForDetails: "Haz clic para ver detalles",
+                modalBozkurtBadge: "Linux • Sistema Operativo",
+                modalBozkurtDesc: "Bozkurt EtOS es un proyecto de sistema operativo basado en Linux diseñado para ofrecer velocidad, simplicidad y comodidad en el uso diario.",
+                modalBozkurtNote: "Puedes seguir las novedades y toda la información detallada en el canal oficial de YouTube.",
+                modalBozkurtBtn: "Canal de YouTube de Bozkurt EtOS",
+                modalBozkurtSecondaryBtn: "Mi Canal de YouTube de Desarrollador",
+                modalAndroidBadge: "Android • Tienda de Apps",
+                modalAndroidDesc: "Android Market 2 es una plataforma ligera y rápida de nueva generación para descubrir aplicaciones y juegos en Android.",
+                modalAndroidNote: "Puedes seguir todos los detalles y el proceso de desarrollo en mi canal de YouTube.",
+                modalAndroidBtn: "Canal de YouTube del Desarrollador",
+                modalCloseBtn: "Cerrar",
+                platformAndroidBadge: "Plataforma Móvil • Android",
+                platformAndroidDesc: "Desarrollo juegos móviles fluidos y ligeros, además de aplicaciones prácticas para el ecosistema Android, priorizando los controles táctiles, la optimización y una interfaz limpia.",
+                platformAndroidNote: "Puedes conocer Android Market 2, uno de mis proyectos activos para Android, más abajo.",
+                platformAndroidTags: ["Desarrollo de Juegos Móviles", "Optimización de Rendimiento", "Diseño UI Limpio"],
+                platformLinuxBadge: "Código Abierto • Linux",
+                platformLinuxDesc: "En Linux desarrollo juegos nativos, herramientas del sistema y soluciones de distribución personalizadas enfocadas en la ligereza, compatibilidad con terminal y estabilidad.",
+                platformLinuxNote: "Más abajo puedes explorar Bozkurt EtOS, mi proyecto de sistema operativo basado en Linux.",
+                platformLinuxTags: ["Juegos Nativos en Linux", "Herramientas de Sistema", "Distros Personalizadas"],
+                platformWindowsBadge: "Escritorio • Windows",
+                platformWindowsDesc: "Para la plataforma de escritorio Windows creo juegos indie en 2D/3D y software práctico, cuidando la fluidez de fotogramas, los controles y la compatibilidad de hardware.",
+                platformWindowsNote: "Comparto el proceso de desarrollo y demostraciones de juegos en mi canal de YouTube.",
+                platformWindowsTags: ["Desarrollo de Juegos PC", "Software de Escritorio", "Optimización de FPS"],
+                footerText: "© 2026 — Programado con pasión en Turquía."
+            }
+        };
+
+        let currentLanguage = 'tr';
+        let activeModalState = null; // { type: 'project' | 'platform', key: string }
+
+        // Proje verileri ve kanal bağlantıları
+        const projectDetails = {
+            bozkurt: {
+                title: "Bozkurt EtOS",
+                badgeKey: "modalBozkurtBadge",
+                descKey: "modalBozkurtDesc",
+                noteKey: "modalBozkurtNote",
+                btnKey: "modalBozkurtBtn",
+                url: "https://www.youtube.com/@bzetos_official",
+                handle: "(@bzetos_official)",
+                secondaryBtnKey: "modalBozkurtSecondaryBtn",
+                secondaryUrl: "https://www.youtube.com/@AndroidMarketDeveloper",
+                secondaryHandle: "(@AndroidMarketDeveloper)",
+                iconSvg: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>'
+            },
+            androidMarket: {
+                title: "Android Market 2",
+                badgeKey: "modalAndroidBadge",
+                descKey: "modalAndroidDesc",
+                noteKey: "modalAndroidNote",
+                btnKey: "modalAndroidBtn",
+                url: "https://www.youtube.com/@AndroidMarketDeveloper",
+                handle: "(@AndroidMarketDeveloper)",
+                iconSvg: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>'
+            }
+        };
+
+        // Platform verileri (Android, Linux, Windows)
+        const platformDetails = {
+            android: {
+                title: "Android",
+                badgeKey: "platformAndroidBadge",
+                descKey: "platformAndroidDesc",
+                noteKey: "platformAndroidNote",
+                tagsKey: "platformAndroidTags",
+                iconSvg: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4483.9993.9993.0001.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4483.9993.9993 0 .5511-.4483.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.8508 12 7.8508s-3.5902.3931-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396"/></svg>'
+            },
+            linux: {
+                title: "Linux",
+                badgeKey: "platformLinuxBadge",
+                descKey: "platformLinuxDesc",
+                noteKey: "platformLinuxNote",
+                tagsKey: "platformLinuxTags",
+                iconSvg: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>'
+            },
+            windows: {
+                title: "Windows",
+                badgeKey: "platformWindowsBadge",
+                descKey: "platformWindowsDesc",
+                noteKey: "platformWindowsNote",
+                tagsKey: "platformWindowsTags",
+                iconSvg: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>'
+            }
+        };
+
+        // Modal içeriğini aktif duruma (proje veya platform) ve dile göre doldurur
+        function renderModalContent() {
+            if (!activeModalState) return;
+            const dict = translations[currentLanguage] || translations.en;
+            const tagsContainer = document.getElementById('modal-tags-container');
+            const youtubeLink = document.getElementById('modal-youtube-link');
+            const secondaryYoutubeLink = document.getElementById('modal-secondary-youtube-link');
+            const closeActionBtn = document.getElementById('modal-close-action-btn');
+
+            if (activeModalState.type === 'project') {
+                const project = projectDetails[activeModalState.key];
+                if (!project) return;
+
+                document.getElementById('modal-icon').innerHTML = project.iconSvg;
+                document.getElementById('modal-title').textContent = project.title;
+                document.getElementById('modal-badge').textContent = dict[project.badgeKey];
+                document.getElementById('modal-description').textContent = dict[project.descKey];
+                document.getElementById('modal-info-note').textContent = dict[project.noteKey];
+                document.getElementById('modal-youtube-btn-text').textContent = dict[project.btnKey];
+                document.getElementById('modal-youtube-handle').textContent = project.handle;
+                youtubeLink.href = project.url;
+
+                if (project.secondaryUrl && project.secondaryBtnKey) {
+                    document.getElementById('modal-secondary-youtube-btn-text').textContent = dict[project.secondaryBtnKey];
+                    document.getElementById('modal-secondary-youtube-handle').textContent = project.secondaryHandle || '';
+                    secondaryYoutubeLink.href = project.secondaryUrl;
+                    secondaryYoutubeLink.classList.remove('hidden');
+                    secondaryYoutubeLink.classList.add('inline-flex');
+                } else {
+                    secondaryYoutubeLink.classList.add('hidden');
+                    secondaryYoutubeLink.classList.remove('inline-flex');
+                }
+
+                tagsContainer.classList.add('hidden');
+                tagsContainer.classList.remove('flex');
+                youtubeLink.classList.remove('hidden');
+                youtubeLink.classList.add('inline-flex');
+                closeActionBtn.classList.add('hidden');
+                closeActionBtn.classList.remove('inline-flex');
+            } else if (activeModalState.type === 'platform') {
+                const platform = platformDetails[activeModalState.key];
+                if (!platform) return;
+
+                document.getElementById('modal-icon').innerHTML = platform.iconSvg;
+                document.getElementById('modal-title').textContent = platform.title;
+                document.getElementById('modal-badge').textContent = dict[platform.badgeKey];
+                document.getElementById('modal-description').textContent = dict[platform.descKey];
+                document.getElementById('modal-info-note').textContent = dict[platform.noteKey];
+
+                // Platform odak etiketlerini oluştur
+                const tags = dict[platform.tagsKey] || [];
+                tagsContainer.innerHTML = tags.map(tag => 
+                    `<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium bg-brand-light text-brand-dark border border-emerald-200/80">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-main"></span>
+                        ${tag}
+                    </span>`
+                ).join('');
+
+                tagsContainer.classList.remove('hidden');
+                tagsContainer.classList.add('flex');
+                youtubeLink.classList.add('hidden');
+                youtubeLink.classList.remove('inline-flex');
+                secondaryYoutubeLink.classList.add('hidden');
+                secondaryYoutubeLink.classList.remove('inline-flex');
+                closeActionBtn.classList.remove('hidden');
+                closeActionBtn.classList.add('inline-flex');
+            }
+        }
+
+        // Proje detay modalını açar
+        function openProjectModal(projectKey) {
+            activeModalState = { type: 'project', key: projectKey };
+            renderModalContent();
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Platform detay modalını açar
+        function openPlatformModal(platformKey) {
+            activeModalState = { type: 'platform', key: platformKey };
+            renderModalContent();
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Detay modalını kapatır
+        function closeProjectModal() {
+            activeModalState = null;
+            const modal = document.getElementById('project-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        // ESC tuşu ile modal kapatma
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && activeModalState) {
+                closeProjectModal();
+            }
+        });
+
+        // Dili sayfaya uygulayan fonksiyon
+        function applyLanguage(lang) {
+            const selectedLang = translations[lang] ? lang : 'en';
+            currentLanguage = selectedLang;
+            const dict = translations[selectedLang];
+
+            // HTML lang özniteliğini ve sayfa başlığını güncelle
+            document.documentElement.lang = selectedLang;
+            document.title = dict.pageTitle;
+
+            // Metinleri güncelle
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    if (key === 'heroTitle') {
+                        el.innerHTML = dict[key];
+                    } else {
+                        el.textContent = dict[key];
+                    }
+                }
+            });
+
+            // Açık bir modal varsa içeriğini yeni dile göre güncelle
+            if (activeModalState) {
+                renderModalContent();
+            }
+
+            // Seçici değerini senkronize et
+            const selector = document.getElementById('language-selector');
+            if (selector) {
+                selector.value = selectedLang;
+            }
+        }
+
+        // Tarayıcı / Sistem dilini otomatik algıla
+        function detectSystemLanguage() {
+            const supported = ['tr', 'en', 'ru', 'de', 'es'];
+            const browserLangs = navigator.languages && navigator.languages.length
+                ? navigator.languages
+                : [navigator.language || navigator.userLanguage || 'en'];
+
+            for (const lang of browserLangs) {
+                const shortCode = lang.toLowerCase().split('-')[0];
+                if (supported.includes(shortCode)) {
+                    return shortCode;
+                }
+            }
+            return 'en'; // Desteklenmeyen diller için varsayılan İngilizce
+        }
+
+        // Sayfa yüklendiğinde sistem dilini algıla ve uygula
+        document.addEventListener('DOMContentLoaded', () => {
+            const systemLang = detectSystemLanguage();
+            applyLanguage(systemLang);
+
+            // Kullanıcının sağ üstten manuel dil değiştirmesini dinle
+            const selector = document.getElementById('language-selector');
+            if (selector) {
+                selector.addEventListener('change', (e) => {
+                    applyLanguage(e.target.value);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
